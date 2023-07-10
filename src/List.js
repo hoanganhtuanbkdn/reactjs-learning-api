@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import './List.css';
 
 const data = [
 	{
 		title: 'Cabbage',
 		id: 0,
-		url: 'https://images.unsplash.com/photo-1688673678101-15195a13a44a',
+		url: 'https://images.unsplash.com/photo-1688317220306-2976558c7a2f',
 	},
 	{
 		title: 'Garlic',
 		id: 1,
-		url: 'https://images.unsplash.com/photo-1661956602926-db6b25f75947',
+		url: 'https://images.unsplash.com/photo-1682789783205-d479fd9a7523',
 	},
 	{
 		title: 'Apple',
@@ -19,12 +20,12 @@ const data = [
 	{
 		title: 'Cabbage',
 		id: 3,
-		url: 'https://images.unsplash.com/photo-1688673678101-15195a13a44a',
+		url: 'https://images.unsplash.com/photo-1688317220306-2976558c7a2f',
 	},
 	{
 		title: 'Garlic',
 		id: 4,
-		url: 'https://images.unsplash.com/photo-1661956602926-db6b25f75947',
+		url: 'https://images.unsplash.com/photo-1682789783205-d479fd9a7523',
 	},
 	{
 		title: 'Apple',
@@ -55,7 +56,7 @@ export default function List() {
 
 	return (
 		<div>
-			<ul style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
+			<ul className="container">
 				{items.map((item) => (
 					<li key={item.id}>
 						<p
@@ -69,15 +70,15 @@ export default function List() {
 						<img
 							alt=""
 							src={item.url}
-							style={{ width: 200 }}
+							style={{ width: 300 }}
 							onClick={() => setImage(item)}
 						/>
 					</li>
 				))}
 			</ul>
 			{showImage && (
-				<div style={box}>
-					<img alt="" src={showImage.url} style={{ width: 300 }} />
+				<div className="box">
+					<img alt="" src={showImage.url} style={{ width: 700 }} />
 					<div>
 						{showImage.id > 0 && (
 							<button onClick={() => onPrev(showImage.id)}>
@@ -96,17 +97,3 @@ export default function List() {
 		</div>
 	);
 }
-
-const box = {
-	position: 'fixed',
-	backgroundColor: 'rgba(0,0,0, 0.6)',
-	top: 0,
-	right: 0,
-	left: 0,
-	bottom: 0,
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-	flexDirection: 'column',
-	gap: 20,
-};
