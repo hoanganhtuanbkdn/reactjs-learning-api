@@ -1,64 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import './List.css';
 
-const data = [
-	{
-		title: 'Cabbage',
-		id: 0,
-		url: 'https://images.unsplash.com/photo-1688317220306-2976558c7a2f',
-	},
-	{
-		title: 'Garlic',
-		id: 1,
-		url: 'https://images.unsplash.com/photo-1682789783205-d479fd9a7523',
-	},
-	{
-		title: 'Apple',
-		id: 2,
-		url: 'https://images.unsplash.com/photo-1661956602944-249bcd04b63f',
-	},
-	{
-		title: 'Cabbage',
-		id: 3,
-		url: 'https://images.unsplash.com/photo-1688317220306-2976558c7a2f',
-	},
-	{
-		title: 'Garlic',
-		id: 4,
-		url: 'https://images.unsplash.com/photo-1682789783205-d479fd9a7523',
-	},
-	{
-		title: 'Apple',
-		id: 5,
-		url: 'https://images.unsplash.com/photo-1661956602944-249bcd04b63f',
-	},
-];
-
-export default function List() {
-	const [items, setItems] = useState([]);
+export default function List({ items }) {
 	const [showImage, setImage] = useState('');
-
-	useEffect(() => {
-		setItems(data);
-	}, []);
 
 	const onPrev = (id) => {
 		const idPrev = id - 1;
-		const itemPrev = data[idPrev];
+		const itemPrev = items[idPrev];
 		setImage(itemPrev);
 	};
 
 	const onNext = (id) => {
 		const idPrev = id + 1;
-		const itemPrev = data[idPrev];
+		const itemPrev = items[idPrev];
 		setImage(itemPrev);
 	};
 
 	return (
 		<div>
 			<ul className="container">
-				{items.map((item) => (
-					<li key={item.id}>
+				{items.map((item, index) => (
+					<li key={index}>
 						<p
 							style={{
 								color:
