@@ -20,7 +20,7 @@ export default function Form({ setItems, items }) {
 		// cach 2
 		setItems((items) => [
 			{
-				title: event.target.title.value,
+				name: event.target.title.value,
 				url: event.target.image.value,
 			},
 			...items,

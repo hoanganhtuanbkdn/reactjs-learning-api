@@ -1,7 +1,8 @@
+/* eslint-disable no-restricted-globals */
 import React, { useEffect, useState } from 'react';
 import './List.css';
 
-export default function List({ items }) {
+export default function List({ items, setItems }) {
 	const [showImage, setImage] = useState('');
 
 	const onPrev = (id) => {
@@ -16,18 +17,23 @@ export default function List({ items }) {
 		setImage(itemPrev);
 	};
 
+	const onDelete = (id) => {
+		confirm('Do you want to delete this item');
+		const newList = items.filter((item) => item.id !== id);
+		setItems(newList);
+	};
 	return (
 		<div>
 			<ul className="container">
 				{items.map((item, index) => (
-					<li key={index}>
+					<li key={index} className="post-item">
 						<p
 							style={{
 								color:
 									item.title === 'Cabbage' ? 'red' : 'green',
 							}}
 						>
-							{item.title}
+							{item.name}
 						</p>
 						<img
 							alt=""
@@ -35,20 +41,23 @@ export default function List({ items }) {
 							style={{ width: 300 }}
 							onClick={() => setImage(item)}
 						/>
+						<button onClick={() => onDelete(item.id)}>
+							Delete
+						</button>
 					</li>
 				))}
 			</ul>
 			{showImage && (
 				<div className="box">
 					<img alt="" src={showImage.url} style={{ width: 700 }} />
-					<div>
+					<div className="actions">
 						{showImage.id > 0 && (
 							<button onClick={() => onPrev(showImage.id)}>
 								{'<'}
 							</button>
 						)}
 						<button onClick={() => setImage('')}>Close</button>
-						{showImage.id < items?.length - 1 && (
+						{showImage.id < items.length - 1 && (
 							<button onClick={() => onNext(showImage.id)}>
 								{'>'}
 							</button>
