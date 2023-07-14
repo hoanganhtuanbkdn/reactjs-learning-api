@@ -31,16 +31,19 @@ export default function List({ items, setItems }) {
 							style={{
 								color:
 									item.title === 'Cabbage' ? 'red' : 'green',
+								width: 200,
 							}}
 						>
 							{item.name}
 						</p>
-						<img
-							alt=""
-							src={item.url}
-							style={{ width: 300 }}
-							onClick={() => setImage(item)}
-						/>
+						<div>
+							<img
+								alt=""
+								src={item.url}
+								style={{ width: 60 }}
+								onClick={() => setImage(item)}
+							/>
+						</div>
 						<button onClick={() => onDelete(item.id)}>
 							Delete
 						</button>

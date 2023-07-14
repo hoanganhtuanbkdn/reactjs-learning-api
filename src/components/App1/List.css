@@ -1,8 +1,8 @@
 .container {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	gap: 10px;
-	flex-wrap: wrap;
+	padding: 0 30px;
 }
 
 .container li {
@@ -30,8 +30,9 @@
 
 .post-item {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	gap: 20px;
+	width: 100%;
 }
